@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp ./CNAME ./build/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -26,5 +26,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

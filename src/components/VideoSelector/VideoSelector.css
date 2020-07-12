@@ -1,0 +1,13 @@
+.VideoSelector button {
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.VideoSelector button:hover {
+    opacity: 0.9;
+}
+
+.VideoSelector button span {
+    vertical-align: super;
+}

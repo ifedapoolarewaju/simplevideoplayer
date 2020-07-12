@@ -1,0 +1,13 @@
+.VideoPlayer {
+    width: 100%;
+    height: 70vh;
+    background-color: #000;
+}
+
+.VideoPlayer video {
+    max-height: 100%;
+}
+
+.VideoPlayer video:focus {
+    outline: none;
+}

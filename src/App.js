@@ -25,7 +25,7 @@ function App() {
     <>
       <VideoSelector onVideoPicked={onVidoePicked} />
       <p>You can also add subtitle files (SRT or WebVTT) to your video.</p>
-      <p>Why was this built? See <a href="https://github.com/ifedapoolarewaju/simplevideoplayer#Why-did-I-build-this">Motivation here.</a></p>
+      <p>Why was this built? See <a href="https://github.com/ifedapoolarewaju/simplevideoplayer#Why-did-I-build-this" target="_blank" rel="noopener noreferrer">Motivation here.</a></p>
     </>
   )
   if (videoSelected) {

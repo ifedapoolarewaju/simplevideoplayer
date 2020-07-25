@@ -26,7 +26,8 @@ function VideoSelector(props) {
 
   return (
     <div className="VideoSelector">
-      <h2>Play your local videos directly. Your videos will not be uploaded anywhere</h2>
+      <h2>Why download a video player when you can simply play your videos on the browser?</h2>
+      <h3>Your videos will not be uploaded anywhere, it's all happening on your computer.</h3>
       <button onClick={onClick}>
         <img src={pressplay} width="30px" alt="Press Play icon"/>
         &nbsp;<span>Select a video file</span>

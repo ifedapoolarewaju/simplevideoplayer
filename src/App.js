@@ -24,8 +24,12 @@ function App() {
   let body = (
     <>
       <VideoSelector onVideoPicked={onVidoePicked} />
-      <p>You can also add subtitle files (SRT or WebVTT) to your video.</p>
       <p>Why was this built? See <a href="https://github.com/ifedapoolarewaju/simplevideoplayer#why-did-i-build-this" target="_blank" rel="noopener noreferrer">Motivation here.</a></p>
+      <p><b>FEATURES</b></p>
+      <p>You can add subtitle files (SRT or WebVTT) to your video.</p>
+      <p>Easy to use keyboard controls</p>
+      <p>VLC style volume amplification</p>
+
     </>
   )
   if (videoSelected) {

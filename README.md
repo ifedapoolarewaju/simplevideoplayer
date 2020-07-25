@@ -1,10 +1,18 @@
 ## Simple Video Player
 
+> Why download a video player when you can simply play your videos on the browser
+
 This is a simple video player that runs on the Browser. Visit the website https://simplevideoplayer.com
 
 Basically, you have a video on your computer you'd like play? You visit https://simplevideoplayer.com and there you have a video player. Your videos will not be uploaded anywhwere, it's all being played locally.
 
 It also supports subtitles (SRT and WebVTT), so add them to your videos as you watch.
+
+### Features
+
+- You can add subtitle files (SRT or WebVTT) to your video.
+- Easy to use keyboard controls
+- VLC style volume amplification
 
 ### Why did I build this?
 

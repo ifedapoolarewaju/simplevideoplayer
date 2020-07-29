@@ -1,5 +1,4 @@
 export default function convert(srtText) {
-  console.log(srtText)
   return srt2webvtt(srtText);
 }
 

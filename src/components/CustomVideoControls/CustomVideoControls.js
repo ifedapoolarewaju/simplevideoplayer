@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { getAmplifier } from './volume';
-import { secondsToTime } from './time'
-import './CustomVideoControls.css';
+import React, { useState, useEffect } from "react";
+import { getAmplifier } from "./volume";
+import { secondsToTime } from "./time";
+import "./CustomVideoControls.css";
 
 function CustomVideoControls(props) {
   const { video } = props;
@@ -13,16 +13,16 @@ function CustomVideoControls(props) {
   const displayVolume = () => {
     setShowVolume(true);
     setTimeout(() => {
-      setShowVolume(false)
+      setShowVolume(false);
     }, 3000);
-  }
+  };
 
   const displayVideoTime = () => {
     setShowVideoTime(true);
     setTimeout(() => {
-      setShowVideoTime(false)
+      setShowVideoTime(false);
     }, 3000);
-  }
+  };
 
   useEffect(() => {
     setAmplifier(getAmplifier(video));
@@ -40,7 +40,7 @@ function CustomVideoControls(props) {
       if (e.keyCode !== UP_KEY && e.keyCode !== DOWN_KEY) {
         return;
       }
-  
+
       e.preventDefault();
       if (e.keyCode === UP_KEY) {
         if (video.volume < 1) {
@@ -55,7 +55,7 @@ function CustomVideoControls(props) {
       } else if (e.keyCode === DOWN_KEY) {
         if (volumeMultiplier > 1) {
           // bring volume amplification down towards 1
-          const newVolumeMultiplier = Math.max(volumeMultiplier - 0.1, 1)
+          const newVolumeMultiplier = Math.max(volumeMultiplier - 0.1, 1);
           setVolumeMultiplier(newVolumeMultiplier);
           amplifier.amplify(newVolumeMultiplier);
         } else if (video.volume > 0) {
@@ -63,15 +63,15 @@ function CustomVideoControls(props) {
           video.volume = Math.max(video.volume - 0.1, 0);
         }
       }
-  
+
       displayVolume();
-    }
-  
-    document.addEventListener('keydown', adjustVolume);
+    };
+
+    document.addEventListener("keydown", adjustVolume);
     // remove event listener after unmounting
     return () => {
-      document.removeEventListener('keydown', adjustVolume);
-    }
+      document.removeEventListener("keydown", adjustVolume);
+    };
   }, [video, amplifier, volumeMultiplier]);
 
   // video time control
@@ -82,7 +82,7 @@ function CustomVideoControls(props) {
       if (e.keyCode !== FORWARD_KEY && e.keyCode !== BACKWARD_KEY) {
         return;
       }
-  
+
       e.preventDefault();
       if (e.keyCode === FORWARD_KEY) {
         // move forward by 0.5 seconds
@@ -91,15 +91,15 @@ function CustomVideoControls(props) {
         // move backward by 0.5 seconds
         video.currentTime = Math.max(0, video.currentTime - 0.5);
       }
-  
-      displayVideoTime();
-    }
 
-    document.addEventListener('keydown', adjustVideoTime);
+      displayVideoTime();
+    };
+
+    document.addEventListener("keydown", adjustVideoTime);
     // remove event listener after unmounting
     return () => {
-      document.removeEventListener('keydown', adjustVideoTime);
-    }
+      document.removeEventListener("keydown", adjustVideoTime);
+    };
   }, [video]);
 
   if (showVolume) {

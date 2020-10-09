@@ -3,7 +3,7 @@
   color: pink;
 }
 
-.App button {
+.App .big-buttons {
   background: pink;
   border: 1px solid pink;
   border-radius: 5px;
@@ -14,7 +14,7 @@
   color: #61dafb;
 }
 
-.App button:hover {
+.App .big-buttons:hover {
   opacity: 0.9;
 }
 
@@ -54,11 +54,110 @@
   text-align: center;
 }
 
-.App-Video-Actions button {
+.App-Video-Actions .big-buttons {
   padding: 12px;
   margin: 15px 5px;
   border: 3px solid #555;
   border-radius: 7px;
   font-weight: bold;
   display: inline-block;
+}
+.controls {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  height: 42px;
+  width: 95%;
+  padding: 10px;
+  position: absolute;
+  top: 79%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hide {
+  display: none;
+}
+
+.controls:fullscreen {
+  display: none;
+}
+.control-button {
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  background: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+.controls-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  margin-top: 16px;
+}
+.volume {
+  margin-top: 9px;
+}
+.progress-bar {
+  width: 100%;
+  align-items: center;
+  height: 5px;
+  margin-top: 10px;
+  background-color: gray;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.progress-fill {
+  height: 5px;
+  width: 50%;
+  background-color: pink;
+}
+.click {
+  cursor: pointer;
+}
+.time {
+  font-size: 13px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: pink;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* mobile view */
+@media (max-width: 720px) {
+  .controls {
+    width: 90%;
+    top: 49%;
+    left: 49.9%;
+  }
+  .App-name {
+    margin-left: 8px;
+    font-size: 25.2px;
+  }
+}
+
+/* tablet view */
+@media (min-device-width: 600px) and (max-device-width: 1280px) {
+  .controls {
+    width: 90%;
+    top: 49%;
+    left: 49.9%;
+  }
+  .App-name {
+    margin-left: 8px;
+    font-size: 32px;
+  }
 }

@@ -40,8 +40,16 @@ function SubtitleSelector(props) {
 
   return (
     <>
-      <button onClick={onClick}>Add Subtitle file</button>
-      <input type="file" ref={fileField} hidden={true} accept=".vtt,.srt" onChange={onFileAdded}/>
+      <button onClick={onClick} className="big-buttons">
+        Add Subtitle file
+      </button>
+      <input
+        type="file"
+        ref={fileField}
+        hidden={true}
+        accept=".vtt,.srt"
+        onChange={onFileAdded}
+      />
     </>
   );
 }

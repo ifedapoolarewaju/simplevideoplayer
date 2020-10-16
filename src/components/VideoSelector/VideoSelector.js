@@ -38,13 +38,7 @@ function VideoSelector(props) {
         <img src={pressplay} width='30px' alt='Press Play icon' />
         &nbsp;<span>Select a video file</span>
       </button>
-      <input
-        type='file'
-        ref={fileField}
-        hidden={true}
-        accept='video/mp4,video/x-m4v,video/*'
-        onChange={onFileAdded}
-      />
+      <input type="file" ref={fileField} hidden={true} accept="video/mp4,video/x-m4v,video/*,.mkv" onChange={onFileAdded}/>
     </div>
   );
 }

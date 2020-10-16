@@ -3,7 +3,7 @@
   color: pink;
 }
 
-.App button {
+.App .default-button {
   background: pink;
   border: 1px solid pink;
   border-radius: 5px;
@@ -14,7 +14,7 @@
   color: #61dafb;
 }
 
-.App button:hover {
+.App .default-button:hover {
   opacity: 0.9;
 }
 
@@ -54,11 +54,31 @@
   text-align: center;
 }
 
-.App-Video-Actions button {
+.App-Video-Actions .default-button {
   padding: 12px;
   margin: 15px 5px;
   border: 3px solid #555;
   border-radius: 7px;
   font-weight: bold;
   display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+
+/* mobile view */
+@media (max-width: 720px) {
+  .App-name {
+    margin-left: 8px;
+    font-size: 25.2px;
+  }
+}
+
+/* tablet view */
+@media (min-device-width: 600px) and (max-device-width: 1280px) {
+  .App-name {
+    margin-left: 8px;
+    font-size: 32px;
+  }
 }

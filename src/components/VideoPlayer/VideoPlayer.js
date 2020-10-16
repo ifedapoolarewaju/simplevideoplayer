@@ -1,22 +1,33 @@
 import React, { useRef, useEffect, useState } from 'react';
 import KeyboardVideoControls from '../CustomVideoControls/CustomVideoControls';
+import VideoControls from '../VideoControls/VideoControls';
 import './VideoPlayer.css';
 
 function VideoPlayer(props) {
   const { videoSrc, subtitleSrc } = props;
   const video = useRef(null);
   const [keyboardControls, setKeyboardControls] = useState(null);
+  const [videoPlayerControls, setVideoControls] = useState(null);
+
+  const videoContainer = useRef(null);
+
   useEffect(() => {
     if (video.current) {
       setKeyboardControls(<KeyboardVideoControls video={video.current} />);
+    };
+    if (video.current) {
+      setVideoControls(<VideoControls video={video.current} videoContainer={videoContainer.current}/>);
     }
-  }, [video])
+  }, [video]);
+
+
 
   return (
-    <div className="VideoPlayer">
-      <video src={videoSrc} controls ref={video}>
-        <track kind="subtitles" src={subtitleSrc} default />
+    <div className='VideoPlayer' ref={videoContainer}>
+      <video src={videoSrc} ref={video} autoPlay>
+        <track kind='subtitles' src={subtitleSrc} default />
       </video>
+      {videoPlayerControls}
       {keyboardControls}
     </div>
   );

@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
-import KeyboardVideoControls from "../CustomVideoControls/CustomVideoControls";
-import VideoControls from "../VideoControls/VideoControls";
-import "./VideoPlayer.css";
+import React, { useRef, useEffect, useState } from 'react';
+import KeyboardVideoControls from '../CustomVideoControls/CustomVideoControls';
+import VideoControls from '../VideoControls/VideoControls';
+import './VideoPlayer.css';
 
 function VideoPlayer(props) {
   const { videoSrc, subtitleSrc } = props;
@@ -23,9 +23,9 @@ function VideoPlayer(props) {
 
 
   return (
-    <div className="VideoPlayer" ref={videoContainer}>
+    <div className='VideoPlayer' ref={videoContainer}>
       <video src={videoSrc} ref={video} autoPlay>
-        <track kind="subtitles" src={subtitleSrc} default />
+        <track kind='subtitles' src={subtitleSrc} default />
       </video>
       {videoPlayerControls}
       {keyboardControls}

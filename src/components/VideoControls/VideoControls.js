@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
-import playIcon from "../../play.svg";
-import speakerIcon from "../../volume-up.svg";
-import fullscreen from "../../expand.svg";
-import disableFullscreen from "../../compress.svg";
-import pauseIcon from "../../pause.svg";
-import mutedIcon from "../../volume-mute.svg";
-import { secondsToTime } from "../CustomVideoControls/time";
+import React, { useEffect, useState, useRef } from 'react';
+import playIcon from '../../play.svg';
+import speakerIcon from '../../volume-up.svg';
+import fullscreenIcon from '../../expand.svg';
+import disableFullscreenIcon from '../../compress.svg';
+import pauseIcon from '../../pause.svg';
+import mutedIcon from '../../volume-mute.svg';
+import { secondsToTime } from '../CustomVideoControls/time';
+import './VideoControls.css';
 
 const VideoControls = (props) => {
   const { video, videoContainer } = props;
@@ -14,7 +15,7 @@ const VideoControls = (props) => {
   const [
     enableDisableFullscreenIcon,
     setEnableDisableFullscreenIcon,
-  ] = useState(fullscreen);
+  ] = useState(fullscreenIcon);
   const [totalDuration, setTotalDuration] = useState(secondsToTime(0));
   const [realTime, setRealTime] = useState(secondsToTime(0));
 
@@ -24,34 +25,34 @@ const VideoControls = (props) => {
   const controls = useRef(null);
 
   useEffect(() => {
-    video.addEventListener("loadedmetadata", () => {
+    video.addEventListener('loadedmetadata', () => {
       setTotalDuration(secondsToTime(video.duration));
     });
-    video.addEventListener("timeupdate", () => {
+    video.addEventListener('timeupdate', () => {
       setRealTime(secondsToTime(video.currentTime));
       const progressWidth = (video.currentTime / video.duration) * 100;
       progress.current.style.width = `${progressWidth}%`;
     });
-    video.addEventListener("ended", () => {
+    video.addEventListener('ended', () => {
       setPauseplayIcon(playIcon);
     });
-    video.addEventListener("click", () => {
+    video.addEventListener('click', () => {
       playVideo();
     });
-    videoContainer.addEventListener("mouseover", () => {
+    videoContainer.addEventListener('mouseover', () => {
       showControls();
     });
-    videoContainer.addEventListener("mouseout", () => {
+    videoContainer.addEventListener('mouseout', () => {
       hideControls();
     });
   }, [video]);
 
   const showControls = () => {
-    controls.current.classList.remove("hide");
+    controls.current.classList.remove('hide');
   };
 
   const hideControls = () => {
-    controls.current.classList.add("hide");
+    controls.current.classList.add('hide');
   };
 
   const playVideo = () => {
@@ -64,11 +65,7 @@ const VideoControls = (props) => {
   };
 
   const muteVideo = () => {
-    if (video.muted) {
-      video.muted = false;
-    } else {
-      video.muted = true;
-    }
+    video.muted = !video.muted;
     setMuteUnmuteIcon(video.muted ? mutedIcon : speakerIcon);
   };
 
@@ -80,13 +77,13 @@ const VideoControls = (props) => {
   const toggleFullscreen = () => {
     if (document.fullscreenElement === null) {
       videoContainer.requestFullscreen();
-      controls.current.style.top = "90%";
+      controls.current.style.top = '90%';
     } else {
       document.exitFullscreen();
-      controls.current.style.top = "";
+      controls.current.style.top = '';
     }
     setEnableDisableFullscreenIcon(
-      document.fullscreenElement ? fullscreen : disableFullscreen
+      document.fullscreenElement ? fullscreenIcon : disableFullscreenIcon
     );
   };
 
@@ -98,46 +95,46 @@ const VideoControls = (props) => {
 
   return (
     <div>
-      <div className="controls hide" ref={controls}>
-        <div className="progress-bar" onClick={scrub} ref={seek}>
-          <div className="progress-fill" ref={progress}></div>
+      <div className='controls hide' ref={controls}>
+        <div className='progress-bar' onClick={scrub} ref={seek}>
+          <div className='progress-fill' ref={progress}></div>
         </div>
-        <div className="controls-grid">
-          <div className="time">
+        <div className='controls-grid'>
+          <div className='time'>
             {realTime} / {totalDuration}
           </div>
-          <button onClick={playVideo} className="control-button">
+          <button onClick={playVideo} className='control-button'>
             <img
               src={pausePlayIcon}
-              width="15px"
-              alt="play"
-              className="click"
+              width='15px'
+              alt='play'
+              className='click'
             />
           </button>
-          <button onClick={muteVideo} className="control-button">
+          <button onClick={muteVideo} className='control-button'>
             <img
               src={muteUnmuteIcon}
-              width="20px"
-              alt="mute"
-              className="click"
+              width='20px'
+              alt='mute'
+              className='click'
             />
           </button>
           <input
-            type="range"
+            type='range'
             ref={volumeSlider}
-            className="volume"
+            className='volume'
             min={0}
             max={1}
-            step="0.1"
+            step='0.1'
             defaultValue={1}
             onChange={volumeChange}
           />
-          <button onClick={toggleFullscreen} className="control-button">
+          <button onClick={toggleFullscreen} className='control-button'>
             <img
               src={enableDisableFullscreenIcon}
-              width="16px"
-              alt="fullscreen"
-              className="click"
+              width='16px'
+              alt='fullscreen'
+              className='click'
             />
           </button>
         </div>

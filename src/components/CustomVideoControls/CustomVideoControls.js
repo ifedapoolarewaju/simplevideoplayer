@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getAmplifier } from "./volume";
-import { secondsToTime } from "./time";
-import "./CustomVideoControls.css";
+import React, { useState, useEffect } from 'react';
+import { getAmplifier } from './volume';
+import { secondsToTime } from './time';
+import './CustomVideoControls.css';
 
 function CustomVideoControls(props) {
   const { video } = props;
@@ -67,10 +67,10 @@ function CustomVideoControls(props) {
       displayVolume();
     };
 
-    document.addEventListener("keydown", adjustVolume);
+    document.addEventListener('keydown', adjustVolume);
     // remove event listener after unmounting
     return () => {
-      document.removeEventListener("keydown", adjustVolume);
+      document.removeEventListener('keydown', adjustVolume);
     };
   }, [video, amplifier, volumeMultiplier]);
 
@@ -95,16 +95,16 @@ function CustomVideoControls(props) {
       displayVideoTime();
     };
 
-    document.addEventListener("keydown", adjustVideoTime);
+    document.addEventListener('keydown', adjustVideoTime);
     // remove event listener after unmounting
     return () => {
-      document.removeEventListener("keydown", adjustVideoTime);
+      document.removeEventListener('keydown', adjustVideoTime);
     };
   }, [video]);
 
   if (showVolume) {
     return (
-      <div className="CustomVideoControls">
+      <div className='CustomVideoControls'>
         {(video.volume * volumeMultiplier * 100).toFixed(0)}%
       </div>
     );
@@ -112,7 +112,7 @@ function CustomVideoControls(props) {
 
   if (showVideoTime) {
     return (
-      <div className="CustomVideoControls">
+      <div className='CustomVideoControls'>
         {secondsToTime(video.currentTime)} / {secondsToTime(video.duration)}
       </div>
     );

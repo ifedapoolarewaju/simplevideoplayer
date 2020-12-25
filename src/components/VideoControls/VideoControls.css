@@ -8,9 +8,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.controls:-webkit-fullscreen{
-  display: none;
-}
 .control-button {
   background-repeat: no-repeat;
   border: none;
@@ -37,8 +34,6 @@
   background-color: gray;
   display: flex;
   position: absolute;
-  /*margin-left: 10px;*/
-  /*padding-right: 10px;*/
   top: 0px;
   left: 0px;
 }

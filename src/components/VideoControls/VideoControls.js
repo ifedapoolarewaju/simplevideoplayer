@@ -48,12 +48,16 @@ const VideoControls = (props) => {
     video.addEventListener('click', () => {
       playVideo();
     });
-    videoContainer.addEventListener('mouseover', () => {
-      showControls();
+    videoContainer.addEventListener('mouseout', () => { 
+      if (document.fullscreenElement === null){
+        hideControls();
+      }
     });
-    videoContainer.addEventListener('mouseout', () => {
-      hideControls();
-    });
+    videoContainer.addEventListener('mousemove', () => {
+        showControls();
+        setTimeout(hideControls, 10000);
+    })
+   
   }, [video, videoContainer, playVideo]);
 
   const showControls = () => {
@@ -95,7 +99,7 @@ const VideoControls = (props) => {
 
   return (
     <div>
-      <div className='controls hide' ref={controls}>
+      <div className='controls hide' ref={controls} >
         <div className='progress-bar' onClick={scrub} ref={seek}>
           <div className='progress-fill' ref={progress}></div>
         </div>

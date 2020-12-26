@@ -24,6 +24,15 @@ const VideoControls = (props) => {
   const seek = useRef(null);
   const controls = useRef(null);
 
+  const playVideo = () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+    setPauseplayIcon(video.paused ? playIcon : pauseIcon);
+  };
+
   useEffect(() => {
     video.addEventListener('loadedmetadata', () => {
       setTotalDuration(secondsToTime(video.duration));
@@ -45,7 +54,7 @@ const VideoControls = (props) => {
     videoContainer.addEventListener('mouseout', () => {
       hideControls();
     });
-  }, [video]);
+  }, [video, videoContainer, playVideo]);
 
   const showControls = () => {
     controls.current.classList.remove('hide');
@@ -53,15 +62,6 @@ const VideoControls = (props) => {
 
   const hideControls = () => {
     controls.current.classList.add('hide');
-  };
-
-  const playVideo = () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-    setPauseplayIcon(video.paused ? playIcon : pauseIcon);
   };
 
   const muteVideo = () => {

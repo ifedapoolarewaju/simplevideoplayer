@@ -4,7 +4,7 @@
 
 This is a simple video player that runs on the Browser. Visit the website https://simplevideoplayer.com
 
-Basically, you have a video on your computer you'd like play? You visit https://simplevideoplayer.com and there you have a video player. Your videos will not be uploaded anywhwere, it's all being played locally.
+Basically, do you have a video on your computer you'd like to play? Just visit https://simplevideoplayer.com and there you have a video player. Your videos will not be uploaded anywhwere, it's all being played locally.
 
 It also supports subtitles (SRT and WebVTT), so add them to your videos as you watch.
 

@@ -51,7 +51,7 @@ function App() {
           <button onClick={enableCutTheLights} className='default-button'>
             Cut the lights
           </button>
-          <p>SRT and WebVTT Subtitle files supported.</p>
+          <p>SRT and WebVTT Subtitle files supported &nbsp;|&nbsp; Press <b>Arrow Keys</b> for Volume and Skips</p>
         </div>
       </>
     );

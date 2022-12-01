@@ -100,7 +100,7 @@ const VideoControls = (props) => {
 
     return (
         <div>
-            <div className='controls hide' ref={controls} >
+            <div className='controls hide' ref={controls}>
                 <div className='progress-bar' onClick={scrub} ref={seek}>
                     <div className='progress-fill' ref={progress}></div>
                 </div>

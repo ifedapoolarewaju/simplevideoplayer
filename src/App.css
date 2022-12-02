@@ -33,14 +33,14 @@
   text-align: center;
   background-color: pink;
   padding: 5px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 }
 
 .App-name {
   margin-left: 10px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
   vertical-align: super;
   color: pink;
@@ -71,7 +71,7 @@
 @media (max-width: 720px) {
   .App-name {
     margin-left: 8px;
-    font-size: 25.2px;
+    font-size: 20px;
   }
 }
 
@@ -79,6 +79,6 @@
 @media (min-device-width: 600px) and (max-device-width: 1280px) {
   .App-name {
     margin-left: 8px;
-    font-size: 32px;
+    font-size: 20px;
   }
 }

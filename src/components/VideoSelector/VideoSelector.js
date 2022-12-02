@@ -30,10 +30,10 @@ function VideoSelector(props) {
         Why download a video player when you can simply play your videos on the
         browser?
       </h2>
-      <h3>
+      <h5>
         Your videos will not be uploaded anywhere, it's all happening on your
         computer.
-      </h3>
+      </h5>
       <button onClick={onClick} className='default-button'>
         <img src={pressplay} width='30px' alt='Press Play icon' />
         &nbsp;<span>Select a video file</span>

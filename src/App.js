@@ -24,6 +24,9 @@ function App() {
   let body = (
     <>
       <VideoSelector onVideoPicked={onVidoePicked} />
+      <br/>
+      <br/>
+      <br/>
       <p>
         Why was this built? See{' '}
         <a
@@ -34,10 +37,12 @@ function App() {
           Motivation here.
         </a>
       </p>
+      <br/>
+      <br/>
       <p>
         <b>FEATURES</b>
       </p>
-      <p>You can add subtitle files (SRT or WebVTT) to your video.</p>
+      <p>You can add subtitle files (SRT or WebVTT).</p>
       <p>Easy to use keyboard controls</p>
       <p>VLC style volume amplification</p>
     </>
@@ -62,7 +67,7 @@ function App() {
       <header className='App-header' style={{ visibility }}>
         <div className='App-logo'>
           <div className='App-icon'>
-            <img src={logo} width='20px' alt='logo' />
+            <img src={logo} width='15px' alt='logo' />
           </div>
           <span className='App-name'>Simple Video Player</span>
         </div>

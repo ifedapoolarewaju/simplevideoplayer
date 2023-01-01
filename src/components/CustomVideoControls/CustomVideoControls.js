@@ -24,6 +24,14 @@ function CustomVideoControls(props) {
     }, 3000);
   };
 
+  const playVideo = () => {
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+  };
+
   useEffect(() => {
     setAmplifier(getAmplifier(video));
   }, [video]);
@@ -101,6 +109,25 @@ function CustomVideoControls(props) {
       document.removeEventListener('keydown', adjustVideoTime);
     };
   }, [video]);
+
+  // spacebar play-pause control
+  useEffect(() => {
+    const playOrPause = (e) => {
+      const SPACEBAR_KEY = 32;
+      if (e.keyCode !== SPACEBAR_KEY) {
+        return;
+      }
+      e.preventDefault();
+      if (e.keyCode === SPACEBAR_KEY) {
+        playVideo();
+      }
+    }
+    document.addEventListener('keydown', playOrPause);
+    // remove event listener after unmounting
+    return () => {
+      document.removeEventListener('keydown', playOrPause);
+    };
+  }, [video])
 
   if (showVolume) {
     return (

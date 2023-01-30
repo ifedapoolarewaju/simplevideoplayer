@@ -32,7 +32,6 @@ const VideoControls = (props) => {
         } else {
             video.pause();
         }
-        setPauseplayIcon(video.paused ? playIcon : pauseIcon);
     };
 
     useEffect(() => {
@@ -46,6 +45,12 @@ const VideoControls = (props) => {
         });
         video.addEventListener('ended', () => {
             setPauseplayIcon(playIcon);
+        });
+        video.addEventListener('pause', () => {
+            setPauseplayIcon(playIcon);
+        });
+        video.addEventListener('play', () => {
+            setPauseplayIcon(pauseIcon);
         });
         video.addEventListener('click', () => {
             playVideo();

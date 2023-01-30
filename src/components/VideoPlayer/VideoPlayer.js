@@ -14,13 +14,12 @@ function VideoPlayer(props) {
   useEffect(() => {
     if (video.current) {
       setKeyboardControls(<KeyboardVideoControls video={video.current} />);
-    };
+    }
+
     if (video.current) {
       setVideoControls(<VideoControls video={video.current} videoContainer={videoContainer.current}/>);
     }
   }, [video]);
-
-
 
   return (
     <div className='VideoPlayer' ref={videoContainer}>

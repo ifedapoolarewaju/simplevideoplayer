@@ -27,7 +27,7 @@ function VideoSelector(props) {
   return (
     <div className='VideoSelector'>
       <h2>
-        Why download a video player when you can simply play your videos on the
+        Why download a video player when you can simply play your videos with the
         browser?
       </h2>
       <h5>

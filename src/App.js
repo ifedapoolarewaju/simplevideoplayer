@@ -24,27 +24,40 @@ function App() {
   let body = (
     <>
       <VideoSelector onVideoPicked={onVidoePicked} />
-      <br/>
-      <br/>
-      <br/>
-      <p>
-        Why was this built? See{' '}
-        <a
-          href='https://github.com/ifedapoolarewaju/simplevideoplayer#why-did-i-build-this'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Motivation here.
-        </a>
-      </p>
-      <br/>
-      <br/>
-      <p>
-        <b>FEATURES</b>
-      </p>
-      <p>You can add subtitle files (SRT or WebVTT).</p>
-      <p>Easy to use keyboard controls</p>
-      <p>VLC style volume amplification</p>
+      <div className='App-Feature-Notes'>
+        <div>
+          <p>
+            <b>FEATURES</b>
+          </p>
+          <p>1. You can add subtitle files (SRT or WebVTT).</p>
+          <p>2. Easy to use keyboard controls</p>
+          <p>3. Increase volume to 400% (like you do in VLC)</p>
+        </div>
+
+        <div>
+          <p>
+            <b>WHY WAS THIS BUILT?</b>
+          </p>
+          <p>
+            1. <a
+              href='https://github.com/ifedapoolarewaju/simplevideoplayer#why-did-i-build-this'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+               An abridged version of why Simple Video Player was built.
+            </a>
+          </p>
+          <p>
+            2. <a
+              href='https://ifedapo.com/posts/play-in-the-chrome-sandbox'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              A more detailed version of why Simple Video Player was built.
+            </a>
+          </p>
+        </div>
+      </div>
     </>
   );
   if (videoSelected) {

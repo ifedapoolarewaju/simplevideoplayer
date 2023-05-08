@@ -2,6 +2,8 @@
   width: 100%;
   height: 70vh;
   background-color: #000;
+  border-top: 1px #585c34 solid;
+  border-bottom: 1px #585c34 solid;
 }
 
 .VideoPlayer video {

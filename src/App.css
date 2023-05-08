@@ -1,5 +1,5 @@
 .App {
-  background-color: #282c34;
+  background-color: #000;
   color: pink;
 }
 
@@ -11,7 +11,8 @@
 }
 
 .App a {
-  color: #61dafb;
+  color: pink;
+  opacity: 0.8;
 }
 
 .App .default-button:hover {
@@ -40,7 +41,7 @@
 
 .App-name {
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bolder;
   vertical-align: super;
   color: pink;
@@ -52,6 +53,21 @@
 
 .App-body {
   text-align: center;
+}
+
+.App-Feature-Notes {
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: left;
+  max-width: 660px;
+}
+
+.App-Feature-Notes > div {
+  display: inline-block;
+  padding: 0 15px;
+  vertical-align: text-top;
+  font-size: 14px;
+  max-width: 300px;
 }
 
 .App-Video-Actions .default-button {
@@ -72,6 +88,10 @@
   .App-name {
     margin-left: 8px;
     font-size: 20px;
+  }
+
+  .App-Feature-Notes {
+    max-width: 400px;
   }
 }
 

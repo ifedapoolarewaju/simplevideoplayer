@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './VideoSelector.css';
 import pressplay from '../../playicon.png';
 
 function VideoSelector(props) {
     const { onVideoPicked } = props;
+    const [dragActive, setDragActive] = useState(false);
     const fileField = useRef(null);
     const onClick = () => {
         if (!fileField.current) {
@@ -25,8 +26,46 @@ function VideoSelector(props) {
         onVideoPicked(objectURL, videoName);
     };
 
+    const onDrag = (e) => {
+        console.log('dragging');
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.type === 'dragenter' || e.type === 'dragover') {
+            setDragActive(true);
+        } else if (e.type === 'dragleave') {
+            setDragActive(false);
+        }
+    };
+
+    const onDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!e.dataTransfer.files || !e.dataTransfer.files[0]) {
+            return;
+        }
+
+        const file = e.dataTransfer.files[0];
+        const videoName = file.name;
+        const objectURL = URL.createObjectURL(file);
+        onVideoPicked(objectURL, videoName);
+    };
+
     return (
-        <div className='VideoSelector'>
+        <div
+            onDrop={onDrop}
+            onDragEnter={onDrag}
+            onDragOver={onDrag}
+            onDragLeave={onDrag}
+            className='VideoSelector'
+        >
+            <div
+                style={{
+                    border: 'pink 2px solid',
+                    position: 'absolute',
+                    inset: '-20%',
+                    display: dragActive ? 'block' : 'none',
+                }}
+            />
             <h2>
                 Why download a video player when you can simply play your videos
                 with the browser?

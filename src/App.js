@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.png';
+import eject from './ejecticon.png';
 import VideoSelector from './components/VideoSelector/VideoSelector';
 import SubtitleSelector from './components/SubtitleSelector/SubtitleSelector';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
@@ -22,6 +23,7 @@ function App() {
     const cursor = cutTheLights ? 'none' : 'auto';
     const enableCutTheLights = () => setCutTheLights(true);
     const disableCutTheLights = () => setCutTheLights(false);
+    const exitVideo = () => setVideoSelected(false);
 
     let body = (
         <>
@@ -81,6 +83,24 @@ function App() {
                         className='default-button'
                     >
                         Cut the lights
+                    </button>
+                    <button onClick={exitVideo} className='default-button'>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '4px',
+                            }}
+                        >
+                            <span>Exit&nbsp;|&nbsp; Eject</span>
+                            <img
+                                src={eject}
+                                width='10px'
+                                height='10px'
+                                alt='eject'
+                            />
+                        </div>
                     </button>
                     <p>
                         SRT and WebVTT Subtitle files supported &nbsp;|&nbsp;

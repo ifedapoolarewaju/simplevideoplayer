@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import playIcon from '../../play.svg';
+import stopIcon from '../../stop.svg';
 import speakerIcon from '../../volume-up.svg';
 import fullscreenIcon from '../../expand.svg';
 import disableFullscreenIcon from '../../compress.svg';
@@ -31,6 +32,7 @@ const VideoControls = (props) => {
             video.pause();
         }
     };
+    const stopVideo = () => (video.currentTime = video.duration);
 
     useEffect(() => {
         video.addEventListener('loadedmetadata', () => {
@@ -140,6 +142,14 @@ const VideoControls = (props) => {
                             src={pausePlayIcon}
                             width='15px'
                             alt='play'
+                            className='click'
+                        />
+                    </button>
+                    <button onClick={stopVideo} className='control-button'>
+                        <img
+                            src={stopIcon}
+                            width='15px'
+                            alt='stop'
                             className='click'
                         />
                     </button>

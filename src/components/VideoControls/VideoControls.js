@@ -11,7 +11,7 @@ import "./VideoControls.css";
 let timeoutHandle = null;
 
 const VideoControls = (props) => {
-  const { video, videoContainer } = props;
+  const { video, videoContainer, videoName } = props;
   const [pausePlayIcon, setPauseplayIcon] = useState(pauseIcon);
   const [muteUnmuteIcon, setMuteUnmuteIcon] = useState(speakerIcon);
   const [enableDisableFullscreenIcon, setEnableDisableFullscreenIcon] =
@@ -34,15 +34,22 @@ const VideoControls = (props) => {
 
   useEffect(() => {
     video.addEventListener("loadedmetadata", () => {
+      const timeLeftOff = localStorage.getItem(videoName);
+      if (timeLeftOff !== null) {
+        video.currentTime = Number(timeLeftOff);
+      }
+
       setTotalDuration(secondsToTime(video.duration));
     });
     video.addEventListener("timeupdate", () => {
       setRealTime(secondsToTime(video.currentTime));
       const progressWidth = (video.currentTime / video.duration) * 100;
       progress.current.style.width = `${progressWidth}%`;
+      localStorage.setItem(videoName, JSON.stringify(video.currentTime));
     });
     video.addEventListener("ended", () => {
       setPauseplayIcon(playIcon);
+      localStorage.removeItem(videoName);
     });
     video.addEventListener("pause", () => {
       setPauseplayIcon(playIcon);

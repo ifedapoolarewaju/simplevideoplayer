@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import './VideoSelector.css';
-import pressplay from '../../playicon.png';
+import React, { useRef } from "react";
+import "./VideoSelector.css";
+import pressplay from "../../playicon.png";
 
 function VideoSelector(props) {
   const { onVideoPicked } = props;
@@ -10,7 +10,7 @@ function VideoSelector(props) {
       return;
     }
     // reset value, so 'onChange' always works
-    fileField.current.value = '';
+    fileField.current.value = "";
     fileField.current.click();
   };
 
@@ -20,25 +20,32 @@ function VideoSelector(props) {
     }
 
     const file = e.target.files[0];
+    const videoName = file.name;
     const objectURL = URL.createObjectURL(file);
-    onVideoPicked(objectURL);
+    onVideoPicked(objectURL, videoName);
   };
 
   return (
-    <div className='VideoSelector'>
+    <div className="VideoSelector">
       <h2>
-        Why download a video player when you can simply play your videos with the
-        browser?
+        Why download a video player when you can simply play your videos with
+        the browser?
       </h2>
       <h5>
         Your videos will not be uploaded anywhere, it's all happening on your
         computer.
       </h5>
-      <button onClick={onClick} className='default-button'>
-        <img src={pressplay} width='30px' alt='Press Play icon' />
+      <button onClick={onClick} className="default-button">
+        <img src={pressplay} width="30px" alt="Press Play icon" />
         &nbsp;<span>Select a video file</span>
       </button>
-      <input type="file" ref={fileField} hidden={true} accept="video/mp4,video/x-m4v,video/*,.mkv" onChange={onFileAdded}/>
+      <input
+        type="file"
+        ref={fileField}
+        hidden={true}
+        accept="video/mp4,video/x-m4v,video/*,.mkv"
+        onChange={onFileAdded}
+      />
     </div>
   );
 }

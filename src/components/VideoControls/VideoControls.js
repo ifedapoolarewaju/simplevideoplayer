@@ -75,10 +75,10 @@ const VideoControls = (props) => {
     useEffect(() => {
         const adjustControlPosition = () => {
             if (document.fullscreenElement === null) {
-                controls.current.style.top = '';
+                controls.current?.style.top = '';
                 setEnableDisableFullscreenIcon(fullscreenIcon);
             } else {
-                controls.current.style.top = '90%';
+                controls.current?.style.top = '90%';
                 setEnableDisableFullscreenIcon(disableFullscreenIcon);
             }
         };
@@ -91,11 +91,11 @@ const VideoControls = (props) => {
     }, []);
 
     const showControls = () => {
-        controls.current.classList.remove('hide');
+        controls.current?.classList.remove('hide');
     };
 
     const hideControls = () => {
-        controls.current.classList.add('hide');
+        controls.current?.classList.add('hide');
     };
 
     const muteVideo = () => {

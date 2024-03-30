@@ -36,7 +36,7 @@ const VideoControls = (props) => {
 
     useEffect(() => {
         video.addEventListener('loadedmetadata', () => {
-            const timeLeftOff = localStorage.getItem(videoName);
+            const timeLeftOff = localStorage.getItem(`vid--name--${videoName}`);
             if (timeLeftOff !== null) {
                 video.currentTime = Number(timeLeftOff);
             }
@@ -54,7 +54,7 @@ const VideoControls = (props) => {
         });
         video.addEventListener('ended', () => {
             setPauseplayIcon(playIcon);
-            localStorage.removeItem(videoName);
+            localStorage.removeItem(`vid--name--${videoName}`);
         });
         video.addEventListener('pause', () => {
             setPauseplayIcon(playIcon);

@@ -47,7 +47,10 @@ const VideoControls = (props) => {
             setRealTime(secondsToTime(video.currentTime));
             const progressWidth = (video.currentTime / video.duration) * 100;
             progress.current.style.width = `${progressWidth}%`;
-            localStorage.setItem(videoName, JSON.stringify(video.currentTime));
+            localStorage.setItem(
+                `vid--name--${videoName}`,
+                String(video.currentTime)
+            );
         });
         video.addEventListener('ended', () => {
             setPauseplayIcon(playIcon);
@@ -74,11 +77,12 @@ const VideoControls = (props) => {
 
     useEffect(() => {
         const adjustControlPosition = () => {
+            if (!controls?.current) return;
             if (document.fullscreenElement === null) {
-                controls.current?.style.top = '';
+                controls.current.style.top = '';
                 setEnableDisableFullscreenIcon(fullscreenIcon);
             } else {
-                controls.current?.style.top = '90%';
+                controls.current.style.top = '90%';
                 setEnableDisableFullscreenIcon(disableFullscreenIcon);
             }
         };

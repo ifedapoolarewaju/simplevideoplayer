@@ -24,6 +24,7 @@ const VideoControls = (props) => {
     const volumeSlider = useRef(null);
     const seek = useRef(null);
     const controls = useRef(null);
+    const videoStorageKey = `vid--name--${videoName}`;
 
     const playVideo = () => {
         if (video.paused) {
@@ -36,7 +37,7 @@ const VideoControls = (props) => {
 
     useEffect(() => {
         video.addEventListener('loadedmetadata', () => {
-            const timeLeftOff = localStorage.getItem(`vid--name--${videoName}`);
+            const timeLeftOff = localStorage.getItem(videoStorageKey);
             if (timeLeftOff !== null) {
                 video.currentTime = Number(timeLeftOff);
             }
@@ -47,14 +48,11 @@ const VideoControls = (props) => {
             setRealTime(secondsToTime(video.currentTime));
             const progressWidth = (video.currentTime / video.duration) * 100;
             progress.current.style.width = `${progressWidth}%`;
-            localStorage.setItem(
-                `vid--name--${videoName}`,
-                String(video.currentTime)
-            );
+            localStorage.setItem(videoStorageKey, String(video.currentTime));
         });
         video.addEventListener('ended', () => {
             setPauseplayIcon(playIcon);
-            localStorage.removeItem(`vid--name--${videoName}`);
+            localStorage.removeItem(videoStorageKey);
         });
         video.addEventListener('pause', () => {
             setPauseplayIcon(playIcon);

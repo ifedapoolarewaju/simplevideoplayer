@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import playIcon from '../../play.svg';
+import stopIcon from '../../stop.svg';
 import speakerIcon from '../../volume-up.svg';
 import fullscreenIcon from '../../expand.svg';
 import disableFullscreenIcon from '../../compress.svg';
@@ -8,16 +9,14 @@ import mutedIcon from '../../volume-mute.svg';
 import { secondsToTime } from '../CustomVideoControls/time';
 import './VideoControls.css';
 
-let timeoutHandle = null
+let timeoutHandle = null;
 
 const VideoControls = (props) => {
-    const { video, videoContainer } = props;
+    const { video, videoContainer, videoName } = props;
     const [pausePlayIcon, setPauseplayIcon] = useState(pauseIcon);
     const [muteUnmuteIcon, setMuteUnmuteIcon] = useState(speakerIcon);
-    const [
-        enableDisableFullscreenIcon,
-        setEnableDisableFullscreenIcon,
-    ] = useState(fullscreenIcon);
+    const [enableDisableFullscreenIcon, setEnableDisableFullscreenIcon] =
+        useState(fullscreenIcon);
     const [totalDuration, setTotalDuration] = useState(secondsToTime(0));
     const [realTime, setRealTime] = useState(secondsToTime(0));
 
@@ -25,6 +24,7 @@ const VideoControls = (props) => {
     const volumeSlider = useRef(null);
     const seek = useRef(null);
     const controls = useRef(null);
+    const videoStorageKey = `vid--name--${videoName}`;
 
     const playVideo = () => {
         if (video.paused) {
@@ -33,18 +33,26 @@ const VideoControls = (props) => {
             video.pause();
         }
     };
+    const stopVideo = () => (video.currentTime = video.duration);
 
     useEffect(() => {
         video.addEventListener('loadedmetadata', () => {
+            const timeLeftOff = localStorage.getItem(videoStorageKey);
+            if (timeLeftOff !== null) {
+                video.currentTime = Number(timeLeftOff);
+            }
+
             setTotalDuration(secondsToTime(video.duration));
         });
         video.addEventListener('timeupdate', () => {
             setRealTime(secondsToTime(video.currentTime));
             const progressWidth = (video.currentTime / video.duration) * 100;
             progress.current.style.width = `${progressWidth}%`;
+            localStorage.setItem(videoStorageKey, String(video.currentTime));
         });
         video.addEventListener('ended', () => {
             setPauseplayIcon(playIcon);
+            localStorage.removeItem(videoStorageKey);
         });
         video.addEventListener('pause', () => {
             setPauseplayIcon(playIcon);
@@ -62,16 +70,34 @@ const VideoControls = (props) => {
             }
 
             timeoutHandle = setTimeout(hideControls, 10000);
-        })
-
+        });
     }, [video, videoContainer]);
 
+    useEffect(() => {
+        const adjustControlPosition = () => {
+            if (!controls?.current) return;
+            if (document.fullscreenElement === null) {
+                controls.current.style.top = '';
+                setEnableDisableFullscreenIcon(fullscreenIcon);
+            } else {
+                controls.current.style.top = '90%';
+                setEnableDisableFullscreenIcon(disableFullscreenIcon);
+            }
+        };
+
+        document.addEventListener('fullscreenchange', adjustControlPosition);
+        // remove event listener after unmounting
+        return () => {
+            document.removeEventListener('keydown', adjustControlPosition);
+        };
+    }, []);
+
     const showControls = () => {
-        controls.current.classList.remove('hide');
+        controls.current?.classList.remove('hide');
     };
 
     const hideControls = () => {
-        controls.current.classList.add('hide');
+        controls.current?.classList.add('hide');
     };
 
     const muteVideo = () => {
@@ -121,6 +147,14 @@ const VideoControls = (props) => {
                             className='click'
                         />
                     </button>
+                    <button onClick={stopVideo} className='control-button'>
+                        <img
+                            src={stopIcon}
+                            width='15px'
+                            alt='stop'
+                            className='click'
+                        />
+                    </button>
                     <button onClick={muteVideo} className='control-button'>
                         <img
                             src={muteUnmuteIcon}
@@ -139,7 +173,10 @@ const VideoControls = (props) => {
                         defaultValue={1}
                         onChange={volumeChange}
                     />
-                    <button onClick={toggleFullscreen} className='control-button'>
+                    <button
+                        onClick={toggleFullscreen}
+                        className='control-button'
+                    >
                         <img
                             src={enableDisableFullscreenIcon}
                             width='16px'

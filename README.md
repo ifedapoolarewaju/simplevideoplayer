@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Simple Video Player
 
-## Getting Started
+> Why download a video player when you can simply play your videos on the browser
 
-First, run the development server:
+This is a simple video player that runs on the Browser. Visit the website https://simplevideoplayer.com
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Basically, do you have a video on your computer you'd like to play? Just visit https://simplevideoplayer.com and there you have a video player. Your videos will not be uploaded anywhwere, it's all being played locally.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It also supports subtitles (SRT and WebVTT), so add them to your videos as you watch.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- You can add subtitle files (SRT or WebVTT) to your video.
+- Easy to use keyboard controls
+- VLC style volume amplification
 
-## Learn More
+### Why did I build this?
 
-To learn more about Next.js, take a look at the following resources:
+So sometimes I have videos which might have been downloaded from untrusted sources and I'm worried about the safety of playing them with any app on my machine. If the video is indeed corrupted with some virus, depending on the kind of firewall rules you have enabled, any app that plays the video may be exploited to grant it persmissions to execute some unwanted actions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Because browsers like Chrome, and Brave have [sandboxing](https://computer.howstuffworks.com/google-chrome-browser7.htm), I'm often fairly more confident about playing these video files via my browser. Even though they are also [not 100% secure](https://security.stackexchange.com/a/122105), I am more assured when using them. Also browsers are updated more often than a lot of video players, so if there were a security issue revolving around video players on the browser, you are likelier to have your browser updated with a security fix than your offline video player.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Also I was just really surprised nothing like this already exists on the internet. :/
 
-## Deploy on Vercel
+PS: My take on this is not based on any in-depth research, but rather a somewhat superficial knowledge on how Computers, Viruses, and Browsers work.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contributions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Oh yes please! Clearly there's a lot of room for improvement. Keyboard shortcuts, and lots of other general video player functionalities. I'd be happy to review your PR. :)

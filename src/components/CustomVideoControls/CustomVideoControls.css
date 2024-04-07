@@ -1,0 +1,8 @@
+.CustomVideoControls {
+  color: whitesmoke;
+  font-size: 60px;
+  font-weight: bolder;
+  position: absolute;
+  top: 200px;
+  right: 100px;
+}

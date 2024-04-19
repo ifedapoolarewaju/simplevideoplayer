@@ -1,94 +1,98 @@
 .controls {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-  height: 42px;
-  width: 95%;
-  max-width: 650px;
-  padding: 10px;
-  position: absolute;
-  top: 79%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+    height: 42px;
+    width: 95%;
+    max-width: 650px;
+    padding: 10px;
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .control-button {
-  background-repeat: no-repeat;
-  border: none;
-  overflow: hidden;
-  background: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 .controls-grid {
-  display: grid;
-  grid-template-columns: 2fr repeat(5, 1fr);
-  margin-top: 16px;
+    display: grid;
+    grid-template-columns: 2fr repeat(5, 1fr);
+    margin-top: 16px;
 }
 .volume {
-  margin-top: 9px;
+    margin-top: 9px;
 }
 .progress-bar {
-  width: 100%;
-  align-items: center;
-  height: 3px;
-  margin-top: 10px;
-  background-color: gray;
-  display: flex;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  cursor: pointer;
-  transition: all 0.2s;
+    width: 100%;
+    align-items: center;
+    height: 3px;
+    margin-top: 10px;
+    background-color: gray;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .progress-bar:hover {
-  height: 5px;
+    height: 5px;
 }
 
 .progress-fill {
-  height: 100%;
-  width: 50%;
-  background-color: pink;
-  transition: all 0.1s;
+    height: 100%;
+    width: 50%;
+    background-color: pink;
+    transition: all 0.1s;
 }
 
 .click {
-  cursor: pointer;
+    cursor: pointer;
 }
 .time {
-  font-size: 13px;
+    font-size: 13px;
 }
-input[type="range"] {
-  -webkit-appearance: none;
-  height: 3px;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  outline: none;
-  cursor: pointer;
+input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    outline: none;
+    cursor: pointer;
 }
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  background-color: pink;
-  height: 15px;
-  width: 15px;
-  border-radius: 15px;
-  cursor: pointer;
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: pink;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 /* mobile view */
 @media screen and (max-width: 720px) {
-  .controls {
-    width: 90%;
-    top: 49%;
-    left: 49.9%;
-  }
+    .controls {
+        width: 90%;
+        top: 49%;
+        left: 49.9%;
+    }
 }
 
 /* tablet view */
 @media screen and (min-device-width: 600px) and (max-device-width: 1280px) {
-  .controls {
-    width: 90%;
-    top: 49%;
-    left: 49.9%;
-  }
+    .controls {
+        width: 90%;
+        top: 49%;
+        left: 49.9%;
+    }
 }

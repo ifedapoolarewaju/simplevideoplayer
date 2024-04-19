@@ -1,106 +1,126 @@
 .App {
-  background-color: #000;
-  color: pink;
+    background-color: #000;
+    color: pink;
 }
 
 .App .default-button {
-  box-sizing: content-box;
-  background: pink;
-  border: 1px solid pink;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #000;
+    box-sizing: content-box;
+    background: pink;
+    border: 1px solid pink;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
 }
 
 .App a {
-  color: pink;
-  opacity: 0.8;
+    color: pink;
+    opacity: 0.8;
 }
 
 .App .default-button:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .App-header {
-  height: 50px;
-  padding: 20px;
-  color: white;
+    height: 50px;
+    padding: 20px;
+    color: white;
 }
 
 .App-logo {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .App-icon {
-  display: inline-block;
-  text-align: center;
-  background-color: pink;
-  padding: 5px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    background-color: pink;
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }
 
 .App-name {
-  margin-left: 10px;
-  font-size: 18px;
-  font-weight: bolder;
-  vertical-align: super;
-  color: pink;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    vertical-align: super;
+    color: pink;
 }
 
 .App-logo img {
-  margin: 5px auto;
+    margin: 5px auto;
 }
 
 .App-body {
-  text-align: center;
+    text-align: center;
+}
+
+.App-information {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.App-information h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.App-information h5 {
+    margin-bottom: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .App-Feature-Notes {
-  margin: 0 auto;
-  margin-top: 50px;
-  text-align: left;
-  max-width: 660px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: left;
+    max-width: 660px;
 }
 
 .App-Feature-Notes > div {
-  display: inline-block;
-  padding: 0 15px;
-  vertical-align: text-top;
-  font-size: 14px;
-  max-width: 300px;
+    display: inline-block;
+    padding: 0 15px;
+    vertical-align: text-top;
+    font-size: 14px;
+    max-width: 300px;
 }
 
 .App-Video-Actions .default-button {
-  padding: 12px;
-  margin: 15px 5px;
-  border: 3px solid #555;
-  border-radius: 7px;
-  font-weight: bold;
-  display: inline-block;
+    padding: 12px;
+    margin: 15px 5px;
+    border: 3px solid #555;
+    border-radius: 7px;
+    font-weight: bold;
+    display: inline-block;
 }
 
 .hide {
-  display: none;
+    display: none;
 }
 
 /* mobile view */
 @media (max-width: 720px) {
-  .App-name {
-    margin-left: 8px;
-    font-size: 20px;
-  }
+    .App-name {
+        margin-left: 8px;
+        font-size: 20px;
+    }
 
-  .App-Feature-Notes {
-    max-width: 400px;
-  }
+    .App-Feature-Notes {
+        max-width: 400px;
+    }
 }
 
 /* tablet view */
 @media (min-device-width: 600px) and (max-device-width: 1280px) {
-  .App-name {
-    margin-left: 8px;
-    font-size: 20px;
-  }
+    .App-name {
+        margin-left: 8px;
+        font-size: 20px;
+    }
 }

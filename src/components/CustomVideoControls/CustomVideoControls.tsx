@@ -3,10 +3,13 @@ import { Amplifier, getAmplifier } from './volume';
 import { secondsToTime } from './time';
 import './CustomVideoControls.css';
 
-type CustomVideoControlsProps = { video: HTMLVideoElement };
+type CustomVideoControlsProps = {
+    setVideo: React.Dispatch<React.SetStateAction<HTMLVideoElement | null>>;
+    video: HTMLVideoElement | null;
+};
 
 function CustomVideoControls(props: CustomVideoControlsProps) {
-    const { video } = props;
+    const { video, setVideo } = props;
     const [volumeMultiplier, setVolumeMultiplier] = useState(1);
     const [showVolume, setShowVolume] = useState(false);
     const [showVideoTime, setShowVideoTime] = useState(false);
@@ -27,16 +30,18 @@ function CustomVideoControls(props: CustomVideoControlsProps) {
     };
 
     const playVideo = () => {
-        if (video.paused) {
+        if (video?.paused) {
             video.play();
         } else {
-            video.pause();
+            video?.pause();
         }
     };
 
     useEffect(() => {
-        setAmplifier(getAmplifier(video));
-    }, [video]);
+        if (!video) {
+            setAmplifier(getAmplifier(setVideo));
+        }
+    }, []);
 
     // volume control
     useEffect(() => {
@@ -45,13 +50,14 @@ function CustomVideoControls(props: CustomVideoControlsProps) {
         }
 
         const adjustVolume = (e: KeyboardEvent) => {
-            const UP_KEY = "ArrowUp'";
+            if (!video) return;
+            const UP_KEY = 'ArrowUp';
             const DOWN_KEY = 'ArrowDown';
             if (e.code !== UP_KEY && e.code !== DOWN_KEY) {
                 return;
             }
-
             e.preventDefault();
+
             if (e.code === UP_KEY) {
                 if (video.volume < 1) {
                     // regular volume increase
@@ -92,6 +98,7 @@ function CustomVideoControls(props: CustomVideoControlsProps) {
 
     // video time control
     useEffect(() => {
+        if (!video) return;
         const adjustVideoTime = (e: KeyboardEvent) => {
             const FORWARD_KEY = 'ArrowRight';
             const BACKWARD_KEY = 'ArrowLeft';
@@ -140,7 +147,7 @@ function CustomVideoControls(props: CustomVideoControlsProps) {
         };
     }, [video]);
 
-    if (showVolume) {
+    if (showVolume && video) {
         return (
             <div className='CustomVideoControls'>
                 {(video.volume * volumeMultiplier * 100).toFixed(0)}%
@@ -148,7 +155,7 @@ function CustomVideoControls(props: CustomVideoControlsProps) {
         );
     }
 
-    if (showVideoTime) {
+    if (showVideoTime && video) {
         return (
             <div className='CustomVideoControls'>
                 {secondsToTime(video.currentTime)} /{' '}

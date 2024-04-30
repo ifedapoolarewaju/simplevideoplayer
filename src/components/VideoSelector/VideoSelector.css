@@ -25,3 +25,7 @@
 .VideoSelector button span {
     vertical-align: super;
 }
+
+.hidden {
+    display: none;
+}

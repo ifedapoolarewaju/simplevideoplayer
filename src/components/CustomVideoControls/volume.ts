@@ -6,9 +6,12 @@ export type Amplifier = {
     amplify: (multiplier: number) => void;
 };
 
-export function getAmplifier(video: HTMLMediaElement): Amplifier {
+export function getAmplifier(
+    setVideo: React.Dispatch<React.SetStateAction<HTMLVideoElement | null>>
+): Amplifier {
     const AvailableContext = window.AudioContext || window.webkitAudioContext;
     const context = new AvailableContext();
+    let video = document.createElement('video');
     const result = {
         context,
         source: context.createMediaElementSource(video),
@@ -19,5 +22,6 @@ export function getAmplifier(video: HTMLMediaElement): Amplifier {
     };
     result.source.connect(result.gain);
     result.gain.connect(context.destination);
+    setVideo(video);
     return result;
 }

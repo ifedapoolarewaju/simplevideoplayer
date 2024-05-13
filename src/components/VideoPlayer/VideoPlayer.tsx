@@ -20,6 +20,12 @@ function VideoPlayer(props: VideoPlayerProps) {
     const videoContainer = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (video?.hasChildNodes()) {
+            if (video.getElementsByTagName('track')[0]) {
+                video.getElementsByTagName('track')[0].src = subtitleSrc;
+                return;
+            }
+        }
         setKeyboardControls(
             <KeyboardVideoControls video={video} setVideo={setVideo} />
         );
@@ -43,7 +49,7 @@ function VideoPlayer(props: VideoPlayerProps) {
                 />
             );
         }
-    }, [videoContainer, video]);
+    }, [videoContainer, video, subtitleSrc]);
 
     return (
         <div className='VideoPlayer' ref={videoContainer}>

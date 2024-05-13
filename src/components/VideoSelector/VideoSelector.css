@@ -4,6 +4,14 @@
     position: relative;
 }
 
+.VideoDragSelector {
+    width: 80%;
+    border: 2px pink solid;
+    margin: 0 auto;
+    position: absolute;
+    inset: -25%;
+}
+
 .VideoSelector button {
     padding: 20px;
     font-size: 20px;
@@ -16,4 +24,8 @@
 
 .VideoSelector button span {
     vertical-align: super;
+}
+
+.hidden {
+    display: none;
 }

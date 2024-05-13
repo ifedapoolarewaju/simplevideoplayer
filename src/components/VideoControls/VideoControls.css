@@ -18,6 +18,12 @@
     border-radius: 5px;
     cursor: pointer;
     outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.control-button svg {
+    width: 15px;
 }
 .controls-grid {
     display: grid;
@@ -60,6 +66,7 @@
 }
 input[type='range'] {
     -webkit-appearance: none;
+    appearance: none;
     height: 3px;
     border-radius: 4px;
     margin-bottom: 15px;

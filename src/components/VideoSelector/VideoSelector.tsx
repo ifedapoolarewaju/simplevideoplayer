@@ -1,11 +1,16 @@
+'use client';
 import React, { useRef, useState } from 'react';
 import './VideoSelector.css';
-import pressplay from '../../playicon.png';
+import pressplay from '@/assets/playicon.png';
+import { useVideoContext } from '../VideoContextProvider/VideoContextProvider';
+import { useRouter } from 'next/navigation';
 
-function VideoSelector(props) {
-    const { onVideoPicked } = props;
+function VideoSelector() {
+    const { setSelectedVideo } = useVideoContext();
     const [dragActive, setDragActive] = useState(false);
-    const fileField = useRef(null);
+    const fileField = useRef<HTMLInputElement>(null);
+
+    const router = useRouter();
     const onClick = () => {
         if (!fileField.current) {
             return;
@@ -15,7 +20,7 @@ function VideoSelector(props) {
         fileField.current.click();
     };
 
-    const onFileAdded = (e) => {
+    const onFileAdded = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
             return;
         }
@@ -23,10 +28,18 @@ function VideoSelector(props) {
         const file = e.target.files[0];
         const videoName = file.name;
         const objectURL = URL.createObjectURL(file);
-        onVideoPicked(objectURL, videoName);
+        setSelectedVideo((prev) => {
+            return {
+                ...prev,
+                videoUrl: objectURL,
+                videoName,
+            };
+        });
+
+        router.push('/screen');
     };
 
-    const onDrag = (e) => {
+    const onDrag = (e: React.DragEvent<HTMLDivElement>) => {
         console.log('dragging');
         e.preventDefault();
         e.stopPropagation();
@@ -37,7 +50,7 @@ function VideoSelector(props) {
         }
     };
 
-    const onDrop = (e) => {
+    const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.stopPropagation();
         if (!e.dataTransfer.files || !e.dataTransfer.files[0]) {
@@ -47,7 +60,15 @@ function VideoSelector(props) {
         const file = e.dataTransfer.files[0];
         const videoName = file.name;
         const objectURL = URL.createObjectURL(file);
-        onVideoPicked(objectURL, videoName);
+        setSelectedVideo((prev) => {
+            return {
+                ...prev,
+                videoUrl: objectURL,
+                videoName,
+            };
+        });
+
+        router.push('/screen');
     };
 
     return (
@@ -59,24 +80,18 @@ function VideoSelector(props) {
             className='VideoSelector'
         >
             <div
-                style={{
-                    border: 'pink 2px solid',
-                    position: 'absolute',
-                    inset: '-20%',
-                    display: dragActive ? 'block' : 'none',
-                }}
+                className={`VideoDragSelector ${!dragActive ? 'hidden' : ''} `}
             />
-            <h2>
-                Why download a video player when you can simply play your videos
-                with the browser?
-            </h2>
-            <h5>
-                Your videos will not be uploaded anywhere, it's all happening on
-                your computer.
-            </h5>
+
             <button onClick={onClick} className='default-button'>
-                <img src={pressplay} width='30px' alt='Press Play icon' />
-                &nbsp;<span>Select a video file</span>
+                <img
+                    className='inline-block align-top'
+                    src={pressplay.src}
+                    width='30px'
+                    alt='Press Play icon'
+                />
+                &nbsp;
+                <span>Select a video file</span>
             </button>
             <input
                 type='file'

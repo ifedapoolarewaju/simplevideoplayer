@@ -13,7 +13,7 @@ const Screen = () => {
     const [cutTheLights, setCutTheLights] = useState(false);
     const { videoUrl, videoName, subtitleSrc } = useVideoContext();
     const router = useRouter();
-    if (videoUrl.length < 1) {
+    if (!videoUrl.length) {
         redirect('/');
     }
 

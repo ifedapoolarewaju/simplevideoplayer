@@ -25,7 +25,6 @@ Always reference these instructions first and fallback to search or bash command
    ```
    - Takes approximately 1.4 seconds to start
    - Runs on http://localhost:3000
-   - **ALWAYS** use development mode for testing changes - production build has known limitations
 
 3. Run linting:
    ```bash
@@ -35,16 +34,15 @@ Always reference these instructions first and fallback to search or bash command
    - Shows expected warnings about missing dependencies and image optimization
    - All warnings are acceptable and do not prevent functionality
 
-### Production Build (IMPORTANT LIMITATIONS)
+### Production Build
 ```bash
 npm run build
 ```
-**WARNING: Build FAILS in sandboxed environments due to network restrictions blocking Google Fonts (fonts.googleapis.com). This is a known limitation.**
-
-- Build attempts to fetch Inter font from Google Fonts
-- Network restrictions cause ENOTFOUND errors
-- **DO NOT** attempt to fix this limitation during development - document any workarounds instead
-- Use development mode (`npm run dev`) for all testing and validation
+- Creates optimized production build
+- Takes approximately 2-3 minutes to complete 
+- Shows warnings about image optimization and ESLint rules (these are expected)
+- May show metadata warnings about metadataBase - these are acceptable
+- Outputs build statistics and static page information
 
 ## Validation
 
@@ -73,9 +71,8 @@ npm run build
 # Always run these before committing changes:
 npm run lint          # Validates code style and catches basic issues
 npm run dev           # Verify application starts successfully
+npm run build         # Test production build (optional but recommended)
 ```
-
-**NEVER** run `npm run build` in sandboxed environments - it will fail due to network restrictions.
 
 ## Codebase Navigation
 
@@ -124,7 +121,7 @@ npm run dev           # Verify application starts successfully
 1. Check browser console for React errors
 2. Verify file imports use the correct `@/` alias paths
 3. Ensure all components are properly exported/imported
-4. Test in development mode only - avoid production build issues
+4. Use both development and production builds for comprehensive testing
 
 ### Styling Changes
 - Global styles: `/src/app/globals.css`
@@ -138,22 +135,21 @@ npm run dev           # Verify application starts successfully
 | `npm install` | ~17 seconds | Downloads 320+ packages |
 | `npm run dev` | ~1.4 seconds | Starts development server |
 | `npm run lint` | <30 seconds | Shows expected warnings |
-| `npm run build` | **FAILS** | Network restrictions block Google Fonts |
+| `npm run build` | ~2-3 minutes | Creates optimized production build |
 
 **NEVER CANCEL** long-running commands. Always wait for completion or documented failure.
 
 ## Troubleshooting
 
 ### Common Issues
-1. **Build fails with Google Fonts error**: Expected behavior in sandboxed environments. Use development mode only.
-2. **Linting warnings about dependencies**: Expected warnings, do not modify unless changing component logic.
-3. **Image optimization warnings**: Expected Next.js warnings, acceptable for current setup.
+1. **Linting warnings about dependencies**: Expected warnings, do not modify unless changing component logic.
+2. **Image optimization warnings**: Expected Next.js warnings, acceptable for current setup.
+3. **Metadata warnings**: Expected metadataBase warnings during build, acceptable for current setup.
 
-### Build Environment Limitations  
-- Google Fonts network access blocked
-- Production builds require internet connectivity
-- Development mode works in all environments
-- Use `npm run dev` for all testing and validation
+### Build Environment Notes  
+- Production builds work in all environments
+- Development mode recommended for faster iteration
+- Both development and production modes are fully functional
 
 ## Project Context
 

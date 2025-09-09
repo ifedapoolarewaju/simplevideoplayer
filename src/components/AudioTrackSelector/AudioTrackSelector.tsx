@@ -31,6 +31,7 @@ function AudioTrackSelector({ video }: AudioTrackSelectorProps) {
     const [audioTracks, setAudioTracks] = useState<AudioTrack[]>([]);
     const [isOpen, setIsOpen] = useState(false);
     const [isSupported, setIsSupported] = useState(false);
+    const [showUnsupportedMessage, setShowUnsupportedMessage] = useState(false);
 
     useEffect(() => {
         if (!video) return;
@@ -40,7 +41,8 @@ function AudioTrackSelector({ video }: AudioTrackSelectorProps) {
             const videoWithAudio = video as VideoElementWithAudioTracks;
             
             // Check if audioTracks is supported
-            setIsSupported('audioTracks' in video);
+            const apiSupported = 'audioTracks' in video;
+            setIsSupported(apiSupported);
             
             // Get audio tracks from the video element
             if (videoWithAudio.audioTracks && videoWithAudio.audioTracks.length > 0) {
@@ -57,8 +59,15 @@ function AudioTrackSelector({ video }: AudioTrackSelectorProps) {
             
             setAudioTracks(tracks);
             
-            // Log for debugging
-            console.log('Audio tracks detected:', tracks.length, tracks);
+            // Log for debugging - this helps users understand what's happening
+            if (apiSupported) {
+                console.log('Simple Video Player: Audio tracks detected:', tracks.length, tracks);
+                if (tracks.length > 1) {
+                    console.log('Simple Video Player: Multiple audio tracks available for switching');
+                }
+            } else {
+                console.log('Simple Video Player: AudioTracks API not supported in this browser');
+            }
         };
 
         // Listen for when metadata is loaded
@@ -115,14 +124,82 @@ function AudioTrackSelector({ video }: AudioTrackSelectorProps) {
             enabled: track.id === trackId
         })));
         
+        console.log('Simple Video Player: Switched to audio track:', trackId);
         setIsOpen(false);
     };
 
-    // Don't render if there's only one or no audio tracks, or if not supported
-    if (!isSupported || audioTracks.length <= 1) {
+    const handleButtonClick = () => {
+        if (audioTracks.length > 1) {
+            setIsOpen(!isOpen);
+        } else if (isSupported && audioTracks.length <= 1) {
+            // Show message about no multiple tracks
+            console.log('Simple Video Player: No multiple audio tracks detected in this video');
+        } else {
+            // Show unsupported message
+            setShowUnsupportedMessage(true);
+            setTimeout(() => setShowUnsupportedMessage(false), 3000);
+        }
+    };
+
+    // Always render if there's a video, but show different states
+    if (!video) {
         return null;
     }
 
+    // If not supported, show a disabled button with explanation on hover/click
+    if (!isSupported) {
+        return (
+            <div className="audio-track-selector">
+                <button 
+                    className="audio-track-button control-button disabled"
+                    onClick={handleButtonClick}
+                    title="Audio track switching requires browser support for audioTracks API (limited availability)"
+                >
+                    <svg
+                        className="w-[20px]"
+                        fill="#888888"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                </button>
+                
+                {showUnsupportedMessage && (
+                    <div className="audio-track-dropdown">
+                        <div className="audio-track-header">Audio Track Switching</div>
+                        <div className="audio-track-message">
+                            Your browser doesn&apos;t support the audioTracks API needed for switching between multiple audio tracks. This feature requires specific browser support.
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
+
+    // If supported but no multiple tracks
+    if (audioTracks.length <= 1) {
+        return (
+            <div className="audio-track-selector">
+                <button 
+                    className="audio-track-button control-button disabled"
+                    onClick={handleButtonClick}
+                    title={audioTracks.length === 1 ? "Only one audio track available" : "No audio tracks detected"}
+                >
+                    <svg
+                        className="w-[20px]"
+                        fill="#888888"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                </button>
+            </div>
+        );
+    }
+
+    // Multiple tracks available - show active selector
     return (
         <div className="audio-track-selector">
             <button 

@@ -5,6 +5,7 @@ import { disableFullscreenIcon } from '@/assets/compress';
 import { playIcon } from '@/assets/play';
 import { pauseIcon } from '@/assets/pause';
 import { secondsToTime } from '../CustomVideoControls/time';
+import AudioTrackSelector from '../AudioTrackSelector/AudioTrackSelector';
 import './VideoControls.css';
 
 type VideoControlsProps = {
@@ -218,6 +219,7 @@ const VideoControls = (props: VideoControlsProps) => {
                         defaultValue={1}
                         onChange={volumeChange}
                     />
+                    <AudioTrackSelector video={video} />
                     <button
                         onClick={toggleFullscreen}
                         className='control-button '

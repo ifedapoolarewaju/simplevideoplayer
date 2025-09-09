@@ -1,0 +1,91 @@
+.audio-track-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.audio-track-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.audio-track-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.audio-track-dropdown {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    min-width: 200px;
+    max-width: 300px;
+    z-index: 1000;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.audio-track-header {
+    padding: 12px 16px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.audio-track-option {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: left;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.audio-track-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.audio-track-option.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.track-label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.track-language {
+    font-size: 11px;
+    color: #cccccc;
+    margin-left: 4px;
+}
+
+.track-indicator {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .audio-track-dropdown {
+        right: auto;
+        left: 0;
+        min-width: 180px;
+    }
+}

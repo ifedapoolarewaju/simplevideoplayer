@@ -112,8 +112,17 @@ input[type='range']::-webkit-slider-thumb {
 @media screen and (max-width: 720px) {
     .controls {
         width: 90%;
-        top: 49%;
-        left: 49.9%;
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .control-button svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .time {
+        font-size: 12px;
     }
 }
 
@@ -121,7 +130,6 @@ input[type='range']::-webkit-slider-thumb {
 @media screen and (min-device-width: 600px) and (max-device-width: 1280px) {
     .controls {
         width: 90%;
-        top: 49%;
-        left: 49.9%;
+        padding: 14px;
     }
 }

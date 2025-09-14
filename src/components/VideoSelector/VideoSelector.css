@@ -26,6 +26,7 @@
     justify-content: center;
     gap: 12px;
     transition: all 0.3s ease;
+    margin: 0 auto;
 }
 
 .VideoSelector button:hover {

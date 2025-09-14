@@ -36,7 +36,7 @@
 
 .App-header {
     height: 60px;
-    padding: 20px;
+    padding: 15px 20px;
     color: white;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.05);
@@ -48,10 +48,10 @@
 }
 
 .App-icon {
-    display: inline-block;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, #ff6b9d, #ff8a80);
-    padding: 8px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -70,19 +70,19 @@
 }
 
 .App-logo img {
-    margin: 5px auto;
+    margin: 0;
 }
 
 .App-body {
     text-align: center;
-    padding: 40px 20px;
+    padding: 10px 20px 25px 20px;
 }
 
 .App-information {
     max-width: 600px;
     margin: 0 auto;
-    margin-top: 40px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .App-information h2 {
@@ -106,13 +106,13 @@
 
 .App-Feature-Notes {
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 40px;
     text-align: left;
     max-width: 800px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 40px;
+    gap: 30px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     backdrop-filter: blur(10px);

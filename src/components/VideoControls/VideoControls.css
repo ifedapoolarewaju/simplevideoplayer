@@ -1,8 +1,8 @@
 .controls {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(26, 26, 46, 0.8));
     height: 50px;
-    width: 95%;
-    max-width: 650px;
+    width: 98%;
+    max-width: 800px;
     padding: 15px;
     position: absolute;
     top: 79%;
@@ -24,14 +24,16 @@
     outline: none;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 8px;
+    align-items: center;
+    padding: 6px;
     transition: all 0.3s ease;
+    min-width: 32px;
+    max-width: 48px;
 }
 
 .control-button:hover {
     background: rgba(255, 138, 128, 0.2);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .control-button svg {
@@ -41,9 +43,11 @@
 
 .controls-grid {
     display: grid;
-    grid-template-columns: 2fr repeat(5, 1fr);
+    grid-template-columns: 2fr auto auto auto 1fr auto;
+    gap: 8px;
     margin-top: 16px;
     align-items: center;
+    justify-items: center;
 }
 
 .volume {
@@ -85,6 +89,7 @@
     font-size: 14px;
     color: #ffffff;
     font-weight: 500;
+    justify-self: start;
 }
 
 input[type='range'] {
@@ -96,6 +101,8 @@ input[type='range'] {
     outline: none;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.2);
+    min-width: 80px;
+    max-width: 120px;
 }
 
 input[type='range']::-webkit-slider-thumb {
@@ -111,25 +118,46 @@ input[type='range']::-webkit-slider-thumb {
 /* mobile view */
 @media screen and (max-width: 720px) {
     .controls {
-        width: 90%;
-        padding: 12px;
+        width: 95%;
+        padding: 10px;
         border-radius: 12px;
+        max-width: 100%;
+    }
+    
+    .controls-grid {
+        gap: 4px;
+    }
+    
+    .control-button {
+        min-width: 28px;
+        max-width: 40px;
+        padding: 4px;
     }
     
     .control-button svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
     
     .time {
-        font-size: 12px;
+        font-size: 11px;
+    }
+    
+    input[type='range'] {
+        min-width: 60px;
+        max-width: 80px;
     }
 }
 
 /* tablet view */
 @media screen and (min-device-width: 600px) and (max-device-width: 1280px) {
     .controls {
-        width: 90%;
-        padding: 14px;
+        width: 95%;
+        padding: 12px;
+        max-width: 700px;
+    }
+    
+    .controls-grid {
+        gap: 6px;
     }
 }

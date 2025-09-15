@@ -12,8 +12,8 @@ function Fork() {
                 rel='noopener noreferrer'
             >
                 <svg
-                    width='80'
-                    height='80'
+                    width='60'
+                    height='60'
                     viewBox='0 0 250 250'
                     style={{
                         fill: '#fff',

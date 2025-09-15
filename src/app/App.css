@@ -5,7 +5,6 @@
 }
 
 .App .default-button {
-    box-sizing: content-box;
     background: linear-gradient(135deg, #ff6b9d, #ff8a80);
     border: none;
     border-radius: 12px;

@@ -34,10 +34,6 @@
     box-shadow: 0 12px 30px rgba(255, 107, 157, 0.5);
 }
 
-.VideoSelector button span {
-    vertical-align: middle;
-}
-
 .hidden {
     display: none;
 }

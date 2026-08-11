@@ -40,6 +40,7 @@ function VideoSelector() {
     };
 
     const onDrag = (e: React.DragEvent<HTMLDivElement>) => {
+        e.dataTransfer.dropEffect = 'copy';
         console.log('dragging');
         e.preventDefault();
         e.stopPropagation();
@@ -53,6 +54,7 @@ function VideoSelector() {
     const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.stopPropagation();
+
         if (!e.dataTransfer.files || !e.dataTransfer.files[0]) {
             return;
         }
@@ -72,35 +74,41 @@ function VideoSelector() {
     };
 
     return (
-        <div
-            onDrop={onDrop}
-            onDragEnter={onDrag}
-            onDragOver={onDrag}
-            onDragLeave={onDrag}
-            className='VideoSelector'
-        >
+        <>
             <div
-                className={`VideoDragSelector ${!dragActive ? 'hidden' : ''} `}
-            />
+                className='video-drag-drop-overlay'
+                onDrop={onDrop}
+                onDragEnter={onDrag}
+                onDragOver={onDrag}
+                onDragLeave={onDrag}
+            ></div>
 
-            <button onClick={onClick} className='default-button'>
-                <img
-                    className='inline-block align-top'
-                    src={pressplay.src}
-                    width='30px'
-                    alt='Press Play icon'
+            <div className='VideoSelector'>
+                <div
+                    className={`VideoDragSelector ${
+                        !dragActive ? 'hidden' : ''
+                    } `}
                 />
-                &nbsp;
-                <span>Select a video file</span>
-            </button>
-            <input
-                type='file'
-                ref={fileField}
-                hidden={true}
-                accept='video/mp4,video/x-m4v,video/*,.mkv'
-                onChange={onFileAdded}
-            />
-        </div>
+
+                <button onClick={onClick} className='default-button'>
+                    <img
+                        className='inline-block align-top'
+                        src={pressplay.src}
+                        width='30px'
+                        alt='Press Play icon'
+                    />
+                    &nbsp;
+                    <span>Select a video file</span>
+                </button>
+                <input
+                    type='file'
+                    ref={fileField}
+                    hidden={true}
+                    accept='video/mp4,video/x-m4v,video/*,.mkv'
+                    onChange={onFileAdded}
+                />
+            </div>
+        </>
     );
 }
 

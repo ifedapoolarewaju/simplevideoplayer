@@ -13,6 +13,17 @@ It also supports subtitles (SRT and WebVTT), so add them to your videos as you w
 - You can add subtitle files (SRT or WebVTT) to your video.
 - Easy to use keyboard controls
 - VLC style volume amplification
+- **Progressive Web App (PWA)** — install it to your home screen and use it offline
+
+### PWA & Offline Support
+
+Simple Video Player is a Progressive Web App. This means you can:
+
+- **Install it** on your phone or desktop from the browser (look for "Add to Home Screen" or the install icon in your browser's address bar)
+- **Use it offline** — once loaded, the app works without an internet connection
+- **Get instant updates** — the service worker keeps the app up-to-date automatically
+
+Since all video playback happens locally on your device, offline support is a natural fit.
 
 ### Why did I build this?
 

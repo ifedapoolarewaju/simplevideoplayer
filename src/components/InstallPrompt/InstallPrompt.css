@@ -1,0 +1,51 @@
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.install-prompt-button {
+    background: transparent;
+    border: 1px solid pink;
+    border-radius: 5px;
+    cursor: pointer;
+    color: pink;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.install-prompt-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.install-prompt-button:hover {
+    background: rgba(255, 192, 203, 0.1);
+}
+
+.install-prompt-dismiss {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: pink;
+    font-size: 11px;
+    opacity: 0.6;
+    padding: 4px;
+}
+
+.install-prompt-dismiss:hover {
+    opacity: 1;
+}
+
+.install-prompt-tip {
+    background: #222;
+    color: pink;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+}

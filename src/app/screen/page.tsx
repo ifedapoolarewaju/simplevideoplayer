@@ -2,19 +2,26 @@
 
 import SubtitleSelector from '@/components/SubtitleSelector/SubtitleSelector';
 import VideoPlayer from '@/components/VideoPlayer/VideoPlayer';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import eject from '@/assets/ejecticon.png';
 import Fork from '@/components/Fork/Fork';
 import logo from '@/assets/logo.png';
 import { useVideoContext } from '@/components/VideoContextProvider/VideoContextProvider';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const Screen = () => {
     const [cutTheLights, setCutTheLights] = useState(false);
     const { videoUrl, videoName, subtitleSrc } = useVideoContext();
     const router = useRouter();
+
+    useEffect(() => {
+        if (!videoUrl.length) {
+            router.replace('/');
+        }
+    }, [videoUrl, router]);
+
     if (!videoUrl.length) {
-        redirect('/');
+        return null;
     }
 
     const visibility = cutTheLights ? 'hidden' : 'visible';

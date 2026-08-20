@@ -2,28 +2,36 @@
     max-width: 500px;
     margin: 0 auto;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .VideoDragSelector {
-    width: 80%;
-    border: 2px pink solid;
+    width: 100%;
+    border: 3px dashed #ff8a80;
     margin: 0 auto;
     position: absolute;
-    inset: -25%;
+    inset: -10%;
+    border-radius: 20px;
+    background: rgba(255, 138, 128, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .VideoSelector button {
-    padding: 20px;
-    font-size: 20px;
-    border-radius: 5px;
+    padding: 24px 40px;
+    font-size: 18px;
+    border-radius: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    margin: 0 auto;
 }
 
 .VideoSelector button:hover {
-    opacity: 0.9;
-}
-
-.VideoSelector button span {
-    vertical-align: super;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 107, 157, 0.5);
 }
 
 .hidden {

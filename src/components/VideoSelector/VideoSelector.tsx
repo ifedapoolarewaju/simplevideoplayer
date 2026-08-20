@@ -85,12 +85,10 @@ function VideoSelector() {
 
             <button onClick={onClick} className='default-button'>
                 <img
-                    className='inline-block align-top'
                     src={pressplay.src}
                     width='30px'
                     alt='Press Play icon'
                 />
-                &nbsp;
                 <span>Select a video file</span>
             </button>
             <input

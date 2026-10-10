@@ -5,7 +5,12 @@ import Fork from '@/components/Fork/Fork';
 
 export default function Home() {
     return (
-        <div className='App'>
+        <div
+            style={{
+                position: 'relative',
+            }}
+            className='App'
+        >
             <header className='App-header'>
                 <div className='App-logo flex content-center items-center '>
                     <div className='App-icon'>
@@ -15,7 +20,7 @@ export default function Home() {
                 </div>
                 <Fork />
             </header>
-            <div className='App-body'>
+            <div className='App-body '>
                 <div className='App-information'>
                     <h2>
                         Why download a video player when you can simply play

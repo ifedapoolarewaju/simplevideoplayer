@@ -124,3 +124,11 @@
         font-size: 20px;
     }
 }
+
+.video-drag-drop-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    inset: 0;
+}

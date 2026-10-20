@@ -1,3 +1,7 @@
+.VideoPlayer-container {
+    width: 100%;
+}
+
 .VideoPlayer {
     width: 100%;
     height: 70vh;
@@ -9,6 +13,8 @@
 .VideoPlayer video {
     height: 100%;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .VideoPlayer video:focus {

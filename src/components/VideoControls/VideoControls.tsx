@@ -5,6 +5,7 @@ import { disableFullscreenIcon } from '@/assets/compress';
 import { playIcon } from '@/assets/play';
 import { pauseIcon } from '@/assets/pause';
 import { secondsToTime } from '../CustomVideoControls/time';
+import AspectRatioSelector from '../AspectRatioSelector/AspectRatioSelector';
 import './VideoControls.css';
 
 type VideoControlsProps = {
@@ -217,6 +218,10 @@ const VideoControls = (props: VideoControlsProps) => {
                         step='0.1'
                         defaultValue={1}
                         onChange={volumeChange}
+                    />
+                    <AspectRatioSelector
+                        video={video}
+                        videoContainer={videoContainer}
                     />
                     <button
                         onClick={toggleFullscreen}

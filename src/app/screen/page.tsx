@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 
 const Screen = () => {
     const [cutTheLights, setCutTheLights] = useState(false);
+    const [ambientMode, setAmbientMode] = useState(false);
     const { videoUrl, videoName, subtitleSrc } = useVideoContext();
     const router = useRouter();
 
@@ -19,6 +20,21 @@ const Screen = () => {
             router.replace('/');
         }
     }, [videoUrl, router]);
+
+    useEffect(() => {
+        const savedAmbient = localStorage.getItem('ambient--mode');
+        if (savedAmbient !== null) {
+            setAmbientMode(savedAmbient === 'true');
+        }
+    }, []);
+
+    const toggleAmbientMode = () => {
+        setAmbientMode((prev) => {
+            const next = !prev;
+            localStorage.setItem('ambient--mode', String(next));
+            return next;
+        });
+    };
 
     if (!videoUrl.length) {
         return null;
@@ -50,6 +66,7 @@ const Screen = () => {
                     videoName={videoName}
                     videoSrc={videoUrl}
                     subtitleSrc={subtitleSrc}
+                    ambientMode={ambientMode}
                 />
                 <div className='App-Video-Actions' style={{ visibility }}>
                     <SubtitleSelector />
@@ -58,6 +75,13 @@ const Screen = () => {
                         className='default-button'
                     >
                         Cut the lights
+                    </button>
+                    <button
+                        onClick={toggleAmbientMode}
+                        className='default-button'
+                        title='Toggle Ambient mode'
+                    >
+                        Ambient: {ambientMode ? 'On' : 'Off'}
                     </button>
                     <button onClick={exitVideo} className='default-button'>
                         <div

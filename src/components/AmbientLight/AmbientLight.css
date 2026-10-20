@@ -1,0 +1,10 @@
+.ambient-light-canvas {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(50px) saturate(140%);
+    transform: scale(1.08);
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+    max-width: 100vw;
+}

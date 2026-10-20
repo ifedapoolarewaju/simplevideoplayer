@@ -8,6 +8,7 @@
     top: 79%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10;
 }
 .control-button {
     background-repeat: no-repeat;
@@ -27,7 +28,7 @@
 }
 .controls-grid {
     display: grid;
-    grid-template-columns: 2fr repeat(5, 1fr);
+    grid-template-columns: 2fr repeat(6, 1fr);
     margin-top: 16px;
 }
 .volume {

@@ -1,16 +1,18 @@
 import React, { useRef, useEffect, useState } from 'react';
 import KeyboardVideoControls from '../CustomVideoControls/CustomVideoControls';
 import VideoControls from '../VideoControls/VideoControls';
+import AmbientLight from '../AmbientLight/AmbientLight';
 import './VideoPlayer.css';
 
 type VideoPlayerProps = {
     videoSrc: string;
     subtitleSrc: string;
     videoName: string;
+    ambientMode?: boolean;
 };
 
 function VideoPlayer(props: VideoPlayerProps) {
-    const { videoSrc, subtitleSrc, videoName } = props;
+    const { videoSrc, subtitleSrc, videoName, ambientMode = false } = props;
     const [video, setVideo] = useState<HTMLVideoElement | null>(null);
     const [keyboardControls, setKeyboardControls] =
         useState<React.JSX.Element | null>(null);
@@ -39,7 +41,11 @@ function VideoPlayer(props: VideoPlayerProps) {
             video.appendChild(track);
         }
 
-        if (video && videoContainer.current) {
+        if (
+            video &&
+            videoContainer.current &&
+            !videoContainer.current.contains(video)
+        ) {
             videoContainer.current.appendChild(video);
             setVideoControls(
                 <VideoControls
@@ -49,12 +55,19 @@ function VideoPlayer(props: VideoPlayerProps) {
                 />
             );
         }
-    }, [videoContainer, video, subtitleSrc]);
+    }, [videoContainer, video, subtitleSrc, videoName, videoSrc]);
 
     return (
-        <div className='VideoPlayer' ref={videoContainer}>
-            {videoPlayerControls}
-            {keyboardControls}
+        <div className='VideoPlayer-container'>
+            <AmbientLight
+                video={video}
+                enabled={ambientMode}
+                containerRef={videoContainer}
+            />
+            <div className='VideoPlayer' ref={videoContainer}>
+                {videoPlayerControls}
+                {keyboardControls}
+            </div>
         </div>
     );
 }

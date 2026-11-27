@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import KeyboardVideoControls from '../CustomVideoControls/CustomVideoControls';
 import VideoControls from '../VideoControls/VideoControls';
+import AudioLanguageSelector from '../AudioLanguageSelector/AudioLanguageSelector';
 import './VideoPlayer.css';
 
 type VideoPlayerProps = {
@@ -53,6 +54,11 @@ function VideoPlayer(props: VideoPlayerProps) {
 
     return (
         <div className='VideoPlayer' ref={videoContainer}>
+            <AudioLanguageSelector
+                video={video}
+                videoSrc={videoSrc}
+                videoName={videoName}
+            />
             {videoPlayerControls}
             {keyboardControls}
         </div>

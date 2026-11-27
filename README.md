@@ -11,6 +11,7 @@ It also supports subtitles (SRT and WebVTT), so add them to your videos as you w
 ### Features
 
 - You can add subtitle files (SRT or WebVTT) to your video.
+- Switch between audio tracks in supported local video files.
 - Easy to use keyboard controls
 - VLC style volume amplification
 

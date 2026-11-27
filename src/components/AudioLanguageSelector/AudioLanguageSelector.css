@@ -1,0 +1,117 @@
+.AudioLanguageSelector {
+    position: absolute;
+    z-index: 4;
+    right: 14px;
+    bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.AudioTrackToggle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    pointer-events: auto;
+}
+
+.AudioTrackToggle:hover,
+.AudioTrackToggle[aria-expanded='true'] {
+    border-color: rgba(255, 192, 203, 0.8);
+    color: pink;
+}
+
+.AudioTrackToggle:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.AudioTrackToggle:focus-visible,
+.AudioTrackOption:focus-visible {
+    outline: 2px solid pink;
+    outline-offset: 2px;
+}
+
+.AudioTrackMenu {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    width: min(280px, calc(100vw - 32px));
+    max-height: min(50vh, 320px);
+    padding: 6px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    background: rgba(18, 18, 18, 0.96);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+}
+
+.AudioTrackMenuTitle {
+    margin: 4px 10px 6px;
+    color: #aaa;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.AudioTrackOption {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+}
+
+.AudioTrackOption:hover:not(:disabled),
+.AudioTrackOption.selected {
+    background: rgba(255, 192, 203, 0.16);
+}
+
+.AudioTrackOption.selected > span:first-child {
+    color: pink;
+}
+
+.AudioTrackOption:disabled {
+    cursor: default;
+}
+
+.AudioTrackCheck {
+    margin-left: 12px;
+    color: pink;
+}
+
+.AudioLanguageStatus {
+    max-width: min(320px, calc(100vw - 32px));
+    margin: 0 0 8px;
+    padding: 6px 8px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    pointer-events: auto;
+}
+
+@media (max-width: 480px) {
+    .AudioLanguageSelector {
+        right: 10px;
+        bottom: 10px;
+    }
+}
